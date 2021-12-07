@@ -1,6 +1,6 @@
 # Code for ATMT Assignment 4 
 
-## Task 1
+## Task 1: Experimenting with Beam Search
 To reproduce the results in Section 1, run the following line in ``task.py``:
 
 ```best_beam_size = task1(best_alpha=0, cache=True)``` 
@@ -8,7 +8,7 @@ To reproduce the results in Section 1, run the following line in ``task.py``:
 Then run the figure generation code in ``figure_plotting.Rmd``.
 
 
-## Task 3
+## Task 3: Adding Length Normalization
 To reproduce the result of finding the best ``alpha`` given a fixed  ``beam_size`` in Section 3, run the following line in ``task.py``:
 
 ```best_alpha = task3_1(best_beam_size=13, cache=True)``` 
@@ -21,7 +21,13 @@ To reproduce the result of finding the best ``beam_size`` given a fixed  ``alpha
 
 Then run the figure generation code in ``figure_plotting.Rmd``.
 
+## Task 4: Investigating the Diversity of Beam Search
+To reproduce the results in Section 1, run ``task4.py``. Pelease uncomment the following line to generate ``N_best`` list:
 
+```
+get_translation_output([13], cache=True, alphas=[0.2], gammas=gammas,
+                          output_dict=output_dict)
+ ``` 
 
 # atmt code base
 Materials for the first assignment of "Advanced Techniques of Machine Translation".

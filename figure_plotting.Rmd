@@ -1,0 +1,174 @@
+---
+title: "Plot Figures for ATMT Assignment 2"
+output: html_notebook
+---
+```{r}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+library(hrbrthemes)
+```
+
+
+# Task 1
+```{r}
+df_full<-read.csv('/Users/eleanorjiang/Downloads/df.csv',sep=',',header=TRUE)
+data  <- filter (df_full, df_full$BLUE.Version == 0)
+coeff <- 22
+# A few constants
+COLOR1 <- "#2166AC"
+COLOR2 <- "#B2182B"
+COLOR3 <- "#69b3a2"
+
+ggplot(data, aes(x=Beam.Size)) +
+  
+  geom_line( aes(y=BLUE.Score), size=2, color=COLOR1) + 
+  geom_line( aes(y=Brevity.Penalty*coeff), size=2, color=COLOR2) +
+  labs(x = "Beam Size") +
+  scale_y_continuous(
+    
+    # Features of the first axis
+    name = "BLUE Score",
+    
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~./coeff, name="Brevity Penalty")
+  ) + 
+  
+  theme_ipsum() +
+
+    theme_minimal() +
+    theme(text=element_text(size=26,family="Times"),
+         axis.text.y=element_text(size=26,family="Times", color = COLOR1), # color = COLOR1
+         axis.title.y = element_text(size=26,family="Times", color = COLOR1),
+          axis.text.y.right=element_text(size=26,family="Times", color = COLOR2),
+         axis.title.y.right = element_text(size=26,family="Times", color = COLOR2), # color = COLOR2
+        axis.text.x=element_text(size=26,family="Times"),
+          aspect.ratio=0.5) 
+
+ggsave('figures/BLUE_BP_vs_Beam_Size.png', width = 16, height = 8, dpi=300)
+```
+
+```{r}
+# filter
+data  <- filter (df_full, df_full$BLUE.Version == 0)
+data  <- filter (data, !is.na(data$Duration))
+coeff <- 366
+# A few constants
+COLOR1 <- "#2166AC"
+COLOR2 <- "#69b3a2"
+
+ggplot(data, aes(x=Beam.Size)) +
+  
+  geom_line( aes(y=Duration), size=2) +
+  labs(x = "Beam Size") +
+  scale_y_continuous( name = "Decoding Time") + 
+    theme_minimal() +
+    theme(text=element_text(size=26,family="Times"),
+         axis.text.y=element_text(size=26,family="Times"), # color = COLOR1
+         axis.title.y = element_text(size=26,family="Times"),
+        axis.text.x=element_text(size=26,family="Times"),
+          aspect.ratio=0.5) 
+
+ggsave('figures/Decoding_Time_vs_beam_size.png', width = 16, height = 8, dpi=300)
+```
+
+
+# Task 3.1
+```{r}
+df_full<-read.csv('/Users/eleanorjiang/Downloads/df.csv',sep=',',header=TRUE)
+data  <- filter (df_full, df_full$BLUE.Version == 0)
+coeff <- 23
+# A few constants
+COLOR1 <- "#2166AC"
+COLOR2 <- "#B2182B"
+COLOR3 <- "#69b3a2"
+
+ggplot(data, aes(x=alpha)) +
+  
+  geom_line( aes(y=BLUE.Score), size=2, color=COLOR1) + 
+  geom_line( aes(y=Brevity.Penalty*coeff), size=2, color=COLOR2) +
+  labs(x = "Alpha") +
+  scale_y_continuous(
+    
+    # Features of the first axis
+    name = "BLUE Score",
+    
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~./coeff, name="Brevity Penalty")
+  ) + 
+  
+  theme_ipsum() +
+
+    theme_minimal() +
+    theme(text=element_text(size=26,family="Times"),
+         axis.text.y=element_text(size=26,family="Times", color = COLOR1), # color = COLOR1
+         axis.title.y = element_text(size=26,family="Times", color = COLOR1),
+          axis.text.y.right=element_text(size=26,family="Times", color = COLOR2),
+         axis.title.y.right = element_text(size=26,family="Times", color = COLOR2), # color = COLOR2
+        axis.text.x=element_text(size=26,family="Times"),
+          aspect.ratio=0.5) 
+
+ggsave('figures/BLUE_BP_vs_alpha.png', width = 16, height = 8, dpi=300)
+```
+
+```{r}
+# filter
+data  <- filter (df_full, df_full$BLUE.Version == 0)
+data  <- filter (data, !is.na(data$Duration))
+coeff <- 366
+# A few constants
+COLOR1 <- "#2166AC"
+COLOR2 <- "#69b3a2"
+
+ggplot(data, aes(x=alpha)) +
+  
+  geom_line( aes(y=Duration), size=2) +
+  labs(x = "Beam Size") +
+  scale_y_continuous( name = "Alpha") + 
+    theme_minimal() +
+    theme(text=element_text(size=26,family="Times"),
+         axis.text.y=element_text(size=26,family="Times"), # color = COLOR1
+         axis.title.y = element_text(size=26,family="Times"),
+        axis.text.x=element_text(size=26,family="Times"),
+          aspect.ratio=0.5) 
+
+ggsave('figures/Decoding_Time_vs_alpha.png', width = 16, height = 8, dpi=300)
+```
+
+# Task 3.2
+```{r}
+df_full<-read.csv('/Users/eleanorjiang/Downloads/df.csv',sep=',',header=TRUE)
+data  <- filter (df_full, df_full$BLUE.Version == 0)
+coeff <- 23
+# A few constants
+COLOR1 <- "#2166AC"
+COLOR2 <- "#B2182B"
+COLOR3 <- "#69b3a2"
+
+ggplot(data, aes(x=Beam.Size)) +
+  
+  geom_line( aes(y=BLUE.Score), size=2, color=COLOR1) + 
+  geom_line( aes(y=Brevity.Penalty*coeff), size=2, color=COLOR2) +
+  labs(x = "Alpha") +
+  scale_y_continuous(
+    
+    # Features of the first axis
+    name = "BLUE Score",
+    
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~./coeff, name="Brevity Penalty")
+  ) + 
+  
+  theme_ipsum() +
+
+    theme_minimal() +
+    theme(text=element_text(size=26,family="Times"),
+         axis.text.y=element_text(size=26,family="Times", color = COLOR1), # color = COLOR1
+         axis.title.y = element_text(size=26,family="Times", color = COLOR1),
+          axis.text.y.right=element_text(size=26,family="Times", color = COLOR2),
+         axis.title.y.right = element_text(size=26,family="Times", color = COLOR2), # color = COLOR2
+        axis.text.x=element_text(size=26,family="Times"),
+          aspect.ratio=0.5) 
+
+ggsave('figures/BLUE_BP_vs_Beam.Size_alpha0.2.png', width = 16, height = 8, dpi=300)
+```

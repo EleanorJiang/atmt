@@ -1,3 +1,28 @@
+# Code for ATMT Assignment 4 
+
+## Task 1
+To reproduce the results in Section 1, run the following line in ``task.py``:
+
+```best_beam_size = task1(best_alpha=0, cache=True)``` 
+
+Then run the figure generation code in ``figure_plotting.Rmd``.
+
+
+## Task 3
+To reproduce the result of finding the best ``alpha`` given a fixed  ``beam_size`` in Section 3, run the following line in ``task.py``:
+
+```best_alpha = task3_1(best_beam_size=13, cache=True)``` 
+
+
+To reproduce the result of finding the best ``beam_size`` given a fixed  ``alpha`` in Section 3, run the following line in ``task.py``:
+
+```task1(best_alpha=0.2, cache=True)``` 
+
+
+Then run the figure generation code in ``figure_plotting.Rmd``.
+
+
+
 # atmt code base
 Materials for the first assignment of "Advanced Techniques of Machine Translation".
 Please refer to the assignment sheet for instructions on how to use the toolkit.
